@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            color: white;
+            padding: 35px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .price-box {
+            background: linear-gradient(135deg, #00d4ff22, #0077ff22);
+            border: 1px solid #00d4ff55;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .price-label { color: #aaa; font-size: 14px; }
+        .price-value {
+            font-size: 42px;
+            font-weight: 800;
+            color: #00d4ff;
+            margin: 5px 0;
+        }
+        .features-box {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+            color: #bbb;
+        }
+        .features-box span { color: white; font-weight: 600; }
+        .btn-back {
+            background: linear-gradient(135deg, #00d4ff, #0077ff);
+            border: none;
+            border-radius: 12px;
+            padding: 11px 30px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .btn-back:hover { opacity: 0.85; color: white; }
+    </style>
+</head>
+<body>
+<div class="card shadow-lg">
+    <div style="font-size:48px">🏡</div>
+    <h3 style="color:#00d4ff; font-weight:700; margin-top:10px;">Prediction Result</h3>
+
+    <div class="price-box">
+        <div class="price-label">Estimated House Price</div>
+        <div class="price-value">₹{{ price }}</div>
+        <div class="price-label">Based on California Housing Model</div>
+    </div>
+
+    <div class="features-box">
+        <p style="color:#00d4ff; font-weight:700; margin-bottom:10px;">Input Summary</p>
+        <div class="row">
+            <div class="col-6">📊 Income: <span>{{ features.MedInc }}</span></div>
+            <div class="col-6">🏚 Age: <span>{{ features.HouseAge }} yrs</span></div>
+            <div class="col-6">🛋 Rooms: <span>{{ features.AveRooms }}</span></div>
+            <div class="col-6">🛏 Bedrooms: <span>{{ features.AveBedrms }}</span></div>
+            <div class="col-6">👥 Population: <span>{{ features.Population }}</span></div>
+            <div class="col-6">🏘 Occupants: <span>{{ features.AveOccup }}</span></div>
+            <div class="col-6">🌐 Lat: <span>{{ features.Latitude }}</span></div>
+            <div class="col-6">🌐 Lng: <span>{{ features.Longitude }}</span></div>
+        </div>
+    </div>
+
+    <a href="{% url 'index' %}" class="btn-back">← Predict Another</a>
+    <footer>Made by Chaitrika</footer>
+</div>
+</body>
+</html>
